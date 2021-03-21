@@ -1,65 +1,94 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+	const [skillPos, setSkillPos] = useState(0);
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+	const skillList = ['websites', 'music', 'digital art', 'apps', 'services'];
+	const skillColor = ['#d95763', '#265d97', '#1d9a71', '#3930a2', '#e89c2b'];
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+	function increaseSkillPos() {
+		if (skillPos < skillList.length - 1) {
+			setSkillPos(skillPos + 1);
+		} else {
+			setSkillPos(0);
+		}
+	}
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+	useEffect(() => {
+		setTimeout(() => {
+			increaseSkillPos();
+		}, 2000);
+	}, [skillPos]);
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+	return (
+		<>
+			<Head>
+				<title>TomHalliwell.dev</title>
+				<meta charSet='utf-8' />
+				<meta
+					name='viewport'
+					content='initial-scale=1.0, width=device-width'
+				/>
+				<link rel='preconnect' href='https://fonts.gstatic.com' />
+				<link
+					href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap'
+					rel='stylesheet'
+				/>
+			</Head>
+			<main className='lp-main'>
+				<div className='lp-main--container'>
+					<div className='intro-gif'>
+						{/* <Image
+							src='/../public/tom_fullbody_iso_32_2021_ripped_COLOR_update_BIGGERCANVAS.gif'
+							alt='Bouncing Tom Sprite'
+							width='96'
+							height='192'
+							layout='responsive'
+						></Image> */}
+						<img
+							src='/bouncing_tom.gif'
+							alt='Bouncing Tom Sprite'
+						></img>
+					</div>
+					<div className='intro-text'>
+						<h1>Tom Halliwell</h1>
+						<p className='lead'>
+							makes{' '}
+							<AnimatePresence exitBeforeEnter>
+								{/* <span>{skillList[skillPos]}</span> */}
+								<motion.span
+									key={skillPos}
+									style={{ color: `${skillColor[skillPos]}` }}
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									exit={{ opacity: 0 }}
+									transition={{
+										x: {
+											type: 'spring',
+											stiffness: 300,
+											damping: 30,
+										},
+										opacity: { duration: 0.2 },
+									}}
+								>
+									{`{${skillList[skillPos]}}`}
+								</motion.span>
+							</AnimatePresence>
+						</p>
+						<p>
+							Soon this will probably be a blog.
+							<br />
+							If you’re interested in web design or development,
+							head to{' '}
+							<a href='https://keeper.studio/' target='_blank'>
+								keeper.studio
+							</a>
+						</p>
+					</div>
+				</div>
+			</main>
+		</>
+	);
 }
