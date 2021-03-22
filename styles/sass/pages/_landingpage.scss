@@ -38,11 +38,13 @@ body {
 			justify-content: flex-end;
 			order: 1;
 			margin: 0 auto;
+			align-items: center;
 			@media screen and (min-width: 640px) {
 			}
 			@media screen and (min-width: 768px) {
 				order: 0;
 				margin: 0px 20px 0px;
+				align-items: flex-end;
 			}
 		}
 
