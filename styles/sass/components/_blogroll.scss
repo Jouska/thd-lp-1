@@ -1,0 +1,51 @@
+.blog-roll {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 400px));
+	padding: 20px 50px 60px;
+	justify-content: center;
+	gap: 50px;
+	transition: background-color 250ms ease-in-out, transform 150ms ease;
+
+	@media screen and (min-width: 640px) {
+		padding-top: 60px;
+	}
+
+	.blog-card {
+		transition: all ease-in-out 0.1s;
+		background-color: transparent;
+
+		&:first-child {
+			grid-column-start: 1;
+			grid-column-end: 3;
+
+			@media screen and (min-width: 800px) {
+				display: grid;
+				grid-template-columns: 60% 40%;
+				align-items: center;
+			}
+
+			h2 {
+				font-size: 2rem;
+			}
+		}
+
+		h2 {
+			font-size: 1.8rem;
+		}
+
+		&--image {
+			width: 100%;
+			object-fit: contain;
+			border-radius: 3px;
+		}
+
+		&--header {
+			padding: 0px 20px 0px;
+		}
+
+		&--body {
+			padding: 0px 20px 20px;
+		}
+	}
+}

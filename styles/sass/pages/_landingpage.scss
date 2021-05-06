@@ -2,24 +2,46 @@ body {
 	background-color: $color-green-1;
 }
 
-.lp-main {
-	padding: 10px 50px;
+.intro-wrapper {
+	background-color: $color-green-2;
+	width: 100%;
+	height: auto;
+	color: whitesmoke;
+	padding: 2rem;
 
+	p {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+
+.lp-main {
 	@media screen and (min-width: 768px) {
-		height: 100vh;
-		width: 100vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
 	}
 
-	&--container {
-		margin: auto auto;
+	.header-wrapper {
+		display: grid;
+		justify-items: start;
+		grid-template-columns: 100%;
+		padding-bottom: 5px;
+
+		@media screen and (min-width: 870px) {
+			grid-template-columns: auto 500px;
+			align-items: end;
+		}
+	}
+
+	&--wrapper {
 		display: block;
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: column;
 		align-items: center;
+		padding: 5vh 20px 7vh;
 
 		@media screen and (min-width: 768px) {
 			flex-direction: row;
@@ -27,53 +49,48 @@ body {
 		}
 
 		@media screen and (min-width: 992px) {
-			// max-width: 60vw;
+			min-width: 800px;
 		}
 
 		.intro-gif {
-			width: 145px;
-			height: auto;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-end;
-			order: 1;
-			margin: 0 auto;
-			align-items: center;
-			@media screen and (min-width: 640px) {
-			}
-			@media screen and (min-width: 768px) {
+			padding: 0px 30px;
+			align-self: flex-end;
+			grid-row: 1 / span 2;
+			@media screen and (min-width: 870px) {
 				order: 0;
-				margin: 0px 20px 0px;
-				align-items: flex-end;
+				margin: 0px 0px;
+				justify-self: start;
 			}
 		}
 
 		.intro-text {
-			max-width: 800px;
+			max-width: 400px;
 			display: flex;
 			justify-content: center;
 			flex-direction: column;
 			order: 0;
+			font-weight: 400;
 			@media screen and (min-width: 640px) {
-				max-width: 52vw;
 				justify-content: flex-end;
+			}
+			@media screen and (min-width: 870px) {
+				max-width: 600px;
+				.intro-body-text {
+					font-size: 1rem;
+				}
 			}
 		}
 	}
 
 	p {
 		margin-bottom: 0px;
-		@media screen and (min-width: 768px) {
-			max-width: 65%;
-		}
 	}
 
 	h1 {
-		color: $color-green-0;
 		margin-bottom: 0px;
 		line-height: 1;
 		margin: 10px 0px;
-		font-size: 3em;
+		font-size: 2.5em;
 		padding-top: 50px;
 
 		@media screen and (min-width: 640px) {
@@ -82,23 +99,23 @@ body {
 		}
 
 		@media screen and (min-width: 870px) {
-			font-size: 4em;
+			font-size: 3em;
 		}
 	}
 
 	a {
-		color: $color-orange-0;
+		// color: $color-orange-0;
+		text-decoration: underline;
 	}
 
 	.lead {
 		margin-top: 0px;
-		margin-bottom: 10px;
+		margin-bottom: 0px;
 		line-height: 1;
-		color: $color-green-4;
 		font-weight: 600;
 		font-size: 1.5em;
 		@media screen and (min-width: 870px) {
-			font-size: 2.1em;
+			font-size: 1.5em;
 		}
 	}
 }
