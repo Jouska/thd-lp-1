@@ -1,4 +1,4 @@
-import { getSinglePost, getPosts } from '../lib/posts';
+import { getSinglePost, getPosts } from '../../lib/posts';
 
 // PostPage page component
 const PostPage = (props) => {
@@ -38,3 +38,5 @@ export async function getStaticProps(context) {
 		props: { post },
 	};
 }
+
+export default PostPage;
