@@ -1,20 +1,29 @@
 @import './utils';
 @import './pages/pages';
 @import './components/blogroll';
+@import './posts/posts';
 
 body {
 	font-family: 'Open Sans', sans-serif;
 	transition: background-color 250ms ease-in-out, transform 150ms ease;
 }
 
+hr {
+	border-style: dashed;
+	width: 60%;
+	margin: 5vmin auto;
+}
+
 .top-wrapper {
 	padding: 15px 20px;
 	font-size: 0.9rem;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
+	align-items: center;
+	height: 99px;
 
 	span {
-		margin-right: 10px;
+		margin-right: 5px;
 		display: flex;
 		align-items: center;
 	}
@@ -107,4 +116,10 @@ button:active {
 .container {
 	max-width: 1024px;
 	margin: 0 auto;
+}
+
+.page-container {
+	max-width: 992px;
+	margin: 0 auto;
+	padding: 0vmin 4vmin 8vmin;
 }

@@ -1,17 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Header from '../components/Header';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function Layout(props) {
+	const router = useRouter();
+
 	const modeButton = useRef();
 	const [currentTheme, setCurrentTheme] = useState({
 		mode: 'light',
 		body: '#cef1e6',
-		text: '#050228',
+		text: '#335b4f',
 		titleText: '#1d9a71',
 		leadText: '#00271a',
 		blogBg: '#f8fffd',
 		toggleSide: 'flex-start',
 		switchBg: '#53b897',
+		postHeader: 'snow',
+		postHeaderBg: '#1d9a71',
 	});
 
 	const modeClick = () => {
@@ -23,31 +30,51 @@ function Layout(props) {
 	const lightTheme = {
 		mode: 'light',
 		body: '#cef1e6',
-		text: '#050228',
+		text: '#335b4f',
 		titleText: '#1d9a71',
 		leadText: '#00271a',
 		blogBg: '#f8fffd',
 		toggleSide: 'translateX(0%)',
 		switchToggle: '#cef1e6',
 		switchBg: '#53b897',
+		postHeader: 'snow',
+		postHeaderBg: '#1d9a71',
 	};
 
 	const darkTheme = {
 		mode: 'dark',
-		body: '#011326',
+		body: '#050228',
 		text: '#d0e0f0',
 		titleText: '#5986b5',
 		leadText: '#d0e0f0',
 		blogBg: '#050228',
 		toggleSide: 'translateX(140%)',
-		switchToggle: '#011326',
+		switchToggle: '#050228',
 		switchBg: '#0a396a',
+		postHeader: 'snow',
+		postHeaderBg: '#0a396a',
 	};
 
 	return (
 		<>
 			<Header />
 			<div className='top-wrapper'>
+				{router.asPath !== '/' ? (
+					<nav>
+						<Link href='/'>
+							<a href='/'>
+								<Image
+									src='/tom_wave_still_32.png'
+									width='64px'
+									height='64px'
+								/>
+							</a>
+						</Link>
+					</nav>
+				) : (
+					<div></div>
+				)}
+
 				<div
 					ref={modeButton}
 					onClick={modeClick}
@@ -66,8 +93,8 @@ function Layout(props) {
 								width: '80%',
 								stroke:
 									currentTheme.mode == 'light'
-										? '#53b897'
-										: '#5986b5',
+										? '#00271a'
+										: '#d0e0f0',
 								transform:
 									currentTheme.mode == 'light'
 										? 'rotate(180deg)'
@@ -116,11 +143,24 @@ function Layout(props) {
 				.header h1 {
 					color: ${currentTheme.titleText};
 				}
+				.post-header {
+					color: ${currentTheme.postHeader};
+				}
 				.lead {
 					color: ${currentTheme.text};
 				}
 				.blog-roll {
 					background-color: ${currentTheme.blogBg};
+				}
+				.blog-wrapper {
+					background-color: ${currentTheme.blogBg};
+				}
+				.blog-container {
+					background-color: ${currentTheme.blogBg};
+				}
+				.post-header {
+					background-color: ${currentTheme.postHeaderBg};
+					z-index: 15;
 				}
 			`}</style>
 		</>

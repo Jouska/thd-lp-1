@@ -1,13 +1,39 @@
 import { getSinglePost, getPosts } from '../../lib/posts';
+import Layout from '../../components/Layout';
+import Container from '../../components/Container';
+import Image from 'next/image';
 
 // PostPage page component
 const PostPage = (props) => {
 	// Render post title and content in the page from props
 	return (
-		<div>
-			<h1>{props.post.title}</h1>
-			<div dangerouslySetInnerHTML={{ __html: props.post.html }} />
-		</div>
+		<Layout>
+			<Container>
+				<main className='single-post-wrapper'>
+					<article className='post-main'>
+						<header className='post-header'>
+							<div className='header-image'>
+								<Image
+									style={{ objectFit: 'contain' }}
+									layout='fill'
+									src={`${props.post.feature_image}`}
+								/>
+							</div>
+							<h1>{props.post.title}</h1>
+							{/* <div className='floating-socials'>social icons</div> */}
+						</header>
+						<div className='post-meta'></div>
+						<div className='post-body'>
+							<div
+								dangerouslySetInnerHTML={{
+									__html: props.post.html,
+								}}
+							/>
+						</div>
+					</article>
+				</main>
+			</Container>
+		</Layout>
 	);
 };
 

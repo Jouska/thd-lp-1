@@ -1,0 +1,47 @@
+.single-post-wrapper {
+	padding: 0 10vmin;
+	.post-main {
+		margin: 0 auto;
+		.post-header {
+			font-size: 2.7rem;
+			line-height: 1.1;
+			position: relative;
+			display: grid;
+			max-height: 440px;
+
+			grid-template-columns: 1fr 1fr;
+			width: 99vw;
+			margin-left: -50vw;
+			margin-right: -50vw;
+			margin-bottom: 5vmin;
+			h1 {
+				margin: 7vmin 0px;
+				margin-left: -10vmin;
+				margin-right: 5px;
+			}
+
+			.header-image {
+				position: relative;
+				max-height: 440px;
+
+				z-index: -10;
+
+				img {
+					object-fit: cover;
+				}
+			}
+
+			.floating-socials {
+				position: absolute;
+				transform: translateX(95vw);
+				right: 5%;
+			}
+		}
+
+		.post-meta {
+		}
+
+		.post-body {
+		}
+	}
+}
