@@ -65,8 +65,8 @@ function Layout(props) {
 							<a href='/'>
 								<Image
 									src='/tom_wave_still_32.png'
-									width='64px'
-									height='64px'
+									width='32px'
+									height='32px'
 								/>
 							</a>
 						</Link>
@@ -90,11 +90,11 @@ function Layout(props) {
 					>
 						<svg
 							style={{
-								width: '80%',
+								width: '60%',
 								stroke:
 									currentTheme.mode == 'light'
-										? '#00271a'
-										: '#d0e0f0',
+										? '#1d9a71'
+										: '#265d97',
 								transform:
 									currentTheme.mode == 'light'
 										? 'rotate(180deg)'
