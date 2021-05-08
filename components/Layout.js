@@ -7,18 +7,30 @@ import { useRouter } from 'next/router';
 function Layout(props) {
 	const router = useRouter();
 
+	useEffect(() => {
+		if (window.matchMedia) {
+			const matchMode = window.matchMedia('(prefers-color-scheme: dark)')
+				.matches;
+			matchMode === true
+				? setCurrentTheme(darkTheme)
+				: setCurrentTheme(lightTheme);
+
+			console.log(matchMode);
+		}
+	}, []);
+
 	const modeButton = useRef();
 	const [currentTheme, setCurrentTheme] = useState({
-		mode: 'light',
-		body: '#cef1e6',
-		text: '#335b4f',
-		titleText: '#1d9a71',
-		leadText: '#00271a',
-		blogBg: '#f8fffd',
-		toggleSide: 'flex-start',
-		switchBg: '#53b897',
-		postHeader: 'snow',
-		postHeaderBg: '#1d9a71',
+		// mode: 'light',
+		// body: '#cef1e6',
+		// text: '#335b4f',
+		// titleText: '#1d9a71',
+		// leadText: '#00271a',
+		// blogBg: '#f8fffd',
+		// toggleSide: 'flex-start',
+		// switchBg: '#53b897',
+		// postHeader: 'snow',
+		// postHeaderBg: '#1d9a71',
 	});
 
 	const modeClick = () => {
@@ -48,7 +60,7 @@ function Layout(props) {
 		titleText: '#5986b5',
 		leadText: '#d0e0f0',
 		blogBg: '#050228',
-		toggleSide: 'translateX(140%)',
+		toggleSide: 'translateX(190%)',
 		switchToggle: '#050228',
 		switchBg: '#0a396a',
 		postHeader: 'snow',
